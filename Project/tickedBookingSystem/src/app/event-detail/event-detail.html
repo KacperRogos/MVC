@@ -7,8 +7,8 @@
     <p>Data: {{event.date}}</p>
     <p>Wolne miejsca: {{event.totalSeats-event.takenSeats}}</p>
     <button (click)="reserve()" class="btn btn-success">Zarezerwuj bilet</button>
-    <p *ngIf="message" class="mt-2 text-success">{{message}}</p><br>
-    <a routerLink="/events" class="btn btn-secondary mt-2">Powrót do listy</a>
+    <p *ngIf="message" class="mt-2 text-success">{{message}}</p>
+    <p><a routerLink="/events" class="btn btn-secondary mt-2">Powrót do listy</a></p>
 </div>
 <div class="container" mt-3 *ngIf="!event">
     <h2>Nie znaleziono wydarzenia</h2>

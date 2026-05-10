@@ -1,1 +1,75 @@
-<p>event-form works!</p>
+<form #eventForm="ngForm" (ngSubmit)="save()">
+    <div class="container">
+        <h2>{{isEditMode ? 'Edytuj wydarzenie' : 'Dodaj wydarzenie'}}</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="name">Nazwa</label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+                [(ngModel)]="name"
+                #nameModel="ngModel"
+                [class.is-invalid]="nameModel.invalid && nameModel.touched"
+            >
+
+            <div class="invalid-feedback">
+                Nazwa jest wymagana
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="data">Data</label>
+
+            <input
+                type="date"
+                class="form-control"
+                id="data"
+                name="date"
+                required
+                [(ngModel)]="date"
+                #dateModel="ngModel"
+                [class.is-invalid]="dateModel.invalid && dateModel.touched"
+            >
+
+            <div class="invalid-feedback">
+                Data jest wymagana
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="LM">Liczba miejsc</label>
+
+            <input
+                type="number"
+                class="form-control"
+                id="LM"
+                name="totalSeats"
+                min="1"
+                required
+                [(ngModel)]="totalSeats"
+                #seatsModel="ngModel"
+                [class.is-invalid]="seatsModel.invalid && seatsModel.touched"
+            >
+
+            <div class="invalid-feedback">
+                Liczba miejsc musi być większa od 0
+            </div>
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="eventForm.invalid"
+        >
+            Zapisz
+        </button>
+
+        <a routerLink="/events" class="btn btn-secondary ms-2">
+            Anuluj
+        </a>
+    </div>
+</form>

@@ -17,7 +17,7 @@
         <td>{{event.date}}</td>
         <td>{{event.totalSeats - event.takenSeats}}</td>
         <td>
-          <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm">Szczegóły</a>
+          <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm">Zarezerwuj</a>
           <a [routerLink]="['/events/edit', event.id]" class="btn btn-warning btn-sm">Edytuj</a>
           <button (click)="delete(event.id)" class="btn btn-danger btn-sm">Usuń</button>
         </td>
