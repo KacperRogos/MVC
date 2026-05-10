@@ -16,6 +16,7 @@ export class EventForm implements OnInit {
   name: string = '';
   date: string = '';
   totalSeats: number = 0;
+  message="";
 
   constructor(
     private route:ActivatedRoute,
@@ -36,15 +37,17 @@ export class EventForm implements OnInit {
     }
   }
   save(): void{
-    if(this.name!="" && this.date!="" && this.totalSeats){
-      if(this.isEditMode){
+    if(new Date(this.date) < new Date()) {
+      alert('Nie można dodać wydarzenia z datą z przeszłości oraz z obecnego dnia');
+      return;
+    }
+    if(this.isEditMode) {
       const id = Number(this.route.snapshot.paramMap.get('id'));
       this.eventService.update({ id, name: this.name, date: this.date, totalSeats: this.totalSeats, takenSeats: 0 });
     }else{
       this.eventService.add({ name: this.name, date: this.date, totalSeats: this.totalSeats, takenSeats: 0 });
-    }
-    this.router.navigate(['/events']);
-    }
+  }
+  this.router.navigate(['/events']);
     
   }
 }
