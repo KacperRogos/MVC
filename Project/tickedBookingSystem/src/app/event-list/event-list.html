@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Lista wydarzeń</h2>
+  <a routerLink="/events/new" class="btn btn-primary mb-3">Dodaj wydarzenie</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Data</th>
+        <th>Wolne miejsca</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{event.name}}</td>
+        <td>{{event.date}}</td>
+        <td>{{event.totalSeats - event.takenSeats}}</td>
+        <td>
+          <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm">Szczegóły</a>
+          <a [routerLink]="['/events/edit', event.id]" class="btn btn-warning btn-sm">Edytuj</a>
+          <button (click)="delete(event.id)" class="btn btn-danger btn-sm">Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
