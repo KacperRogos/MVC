@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <h2 class="text-center mb-4">Logowanie</h2>
+      <div class="mb-3">
+        <label class="form-label">Nazwa użytkownika</label>
+        <input type="text" class="form-control" [(ngModel)]="username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Hasło</label>
+        <input type="password" class="form-control" [(ngModel)]="password">
+      </div>
+      <p *ngIf="error" class="text-danger">{{error}}</p>
+      <button (click)="login()" class="btn btn-primary w-100">Zaloguj</button>
+    </div>
+  </div>
+</div>

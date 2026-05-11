@@ -4,6 +4,12 @@
     <a routerLink="/events" class="btn btn-outline-light me-2">Lista wydarzeń</a>
     <a routerLink="/events/new" class="btn btn-success">Dodaj wydarzenie</a>
   </div>
+  <ng-container *ngIf="authService.isLoggedIn(); else loginBtn">
+    <a routerLink="/home" (click)="authService.logout()" class="btn btn-danger">Wyloguj</a>
+  </ng-container>
+  <ng-template #loginBtn>
+    <a routerLink="/login" class="btn btn-outline-light">Zaloguj</a>
+  </ng-template>
 </nav>
 
 <router-outlet></router-outlet>

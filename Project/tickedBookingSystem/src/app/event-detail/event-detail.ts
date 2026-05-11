@@ -29,6 +29,7 @@ export class EventDetail implements OnInit {
       let success=this.eventService.reserve(this.event.id);
       if(success){
         this.message="Zarezerwowano bilet!";
+        this.event = this.eventService.getById(this.event.id);
       }else{
         this.message="Brak wolnych miejsc";
       }
