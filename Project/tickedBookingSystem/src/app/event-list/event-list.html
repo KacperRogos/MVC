@@ -1,6 +1,9 @@
 <div class="container">
   <h2>Lista wydarzeń</h2>
-  <a routerLink="/events/new" class="btn btn-primary mb-3">Dodaj wydarzenie</a>
+
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Szukaj wydarzenia..." [(ngModel)]="searchText">
+  </div>
 
   <table class="table">
     <thead>
@@ -12,14 +15,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let event of events">
+      <tr *ngFor="let event of filteredEvents()">
         <td>{{event.name}}</td>
         <td>{{event.date}}</td>
         <td>{{event.totalSeats - event.takenSeats}}</td>
         <td>
           <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm">Zarezerwuj</a>
           <a [routerLink]="['/events/edit', event.id]" class="btn btn-warning btn-sm">Edytuj</a>
-          <button (click)="delete(event.id)" class="btn btn-danger btn-sm">Usuń</button>
+          @if (authService.isLoggedIn()) {
+            <button (click)="delete(event.id)" class="btn btn-danger btn-sm">Usuń</button>
+          }
         </td>
       </tr>
     </tbody>
