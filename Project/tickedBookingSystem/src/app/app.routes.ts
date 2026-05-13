@@ -4,6 +4,7 @@ import { EventForm } from './event-form/event-form';
 import { EventList } from './event-list/event-list';
 import { Home } from './home/home';
 import { Login } from './login/login';
+import { MyReservations } from './my-reservations/my-reservations';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,5 +13,7 @@ export const routes: Routes = [
     { path: 'events/edit/:id', component: EventForm },
     { path: 'events/:id', component: EventDetail },
     { path: 'home', component: Home},
-    { path: 'login', component: Login}
+    { path: 'login', component: Login},
+    { path: 'myReservations', component: MyReservations}
+
 ];

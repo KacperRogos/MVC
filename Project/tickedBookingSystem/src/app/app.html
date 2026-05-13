@@ -3,6 +3,7 @@
   <div>
     <a routerLink="/events" class="btn btn-outline-light me-2">Lista wydarzeń</a>
     <a routerLink="/events/new" class="btn btn-success">Dodaj wydarzenie</a>
+    <a routerLink="/myReservations" class="btn btn-success">Moje rezerwacje</a>
   </div>
   <ng-container *ngIf="authService.isLoggedIn(); else loginBtn">
     <a routerLink="/home" (click)="authService.logout()" class="btn btn-danger">Wyloguj</a>

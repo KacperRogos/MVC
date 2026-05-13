@@ -79,4 +79,12 @@ export class EventService {
     this.save(events);
     return true;
   }
+  cancelReservation(id: number): void {
+    const events = this.load();
+    const event = events.find(e => e.id === id);
+    if (event && event.takenSeats > 0) {
+      event.takenSeats--;
+      this.save(events);
+    }
+}
 }

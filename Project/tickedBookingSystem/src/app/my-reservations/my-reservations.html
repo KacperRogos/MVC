@@ -1,0 +1,30 @@
+<div>
+    <h1>Moje rezerwacje</h1>
+    @if (events.length) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Liczba biletów</th>
+                    <th>Nazwa</th>
+                    <th>Data</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (event of events; track event.id) {
+                <tr>
+                    <td>{{getCount(event.id)}}</td>
+                    <td>{{event.name}}</td>
+                    <td>{{event.date}}</td>
+                    <td>
+                        <a [routerLink]="['/events', event.id]" class="btn btn-info btn-sm me-2">Szczegóły</a>
+                        <button (click)="cancel(event.id)" class="btn btn-danger btn-sm">Anuluj rezerwacje</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }@else{
+        <h2>Brak rezerwacji</h2>
+    }
+</div>
