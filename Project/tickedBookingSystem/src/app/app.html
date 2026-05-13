@@ -1,16 +1,30 @@
-<nav class="navbar navbar-dark bg-dark px-3">
+<nav class="navbar navbar-dark bg-dark px-3 d-flex justify-content-between">
   <a routerLink="/home"><span class="navbar-brand">System rezerwacji biletów</span></a>
-  <div>
+
+  <div class="d-flex align-items-center">
     <a routerLink="/events" class="btn btn-outline-light me-2">Lista wydarzeń</a>
-    <a routerLink="/events/new" class="btn btn-success">Dodaj wydarzenie</a>
-    <a routerLink="/myReservations" class="btn btn-success">Moje rezerwacje</a>
+    @if (authService.isLoggedIn()) {
+      <div>
+        <a routerLink="/events/new" class="btn btn-success me-2">Dodaj wydarzenie</a>
+        <a routerLink="/myReservations" class="btn btn-outline-light me-2">Moje rezerwacje</a>
+      </div>
+    }
   </div>
-  <ng-container *ngIf="authService.isLoggedIn(); else loginBtn">
-    <a routerLink="/home" (click)="authService.logout()" class="btn btn-danger">Wyloguj</a>
-  </ng-container>
-  <ng-template #loginBtn>
-    <a routerLink="/login" class="btn btn-outline-light">Zaloguj</a>
-  </ng-template>
+
+  <div class="d-flex align-items-center">
+    @if (authService.isLoggedIn()) {
+      <div>
+        <span class="text-light me-2">{{authService.getLoggedUser()}}</span>
+        <a routerLink="/home" (click)="authService.logout()" class="btn btn-danger">Wyloguj</a>
+      </div>
+    }
+    @else{
+      <div>
+        <a routerLink="/login" class="btn btn-outline-light me-2">Zaloguj</a>
+        <a routerLink="/register" class="btn btn-outline-light">Zarejestruj</a>
+      </div>
+    }
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
