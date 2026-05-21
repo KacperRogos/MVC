@@ -8,9 +8,10 @@ export class EventService {
   private storageKey = 'events';
 
   private defaultEvents: Event[] = [
-    { id: 1, name: "Koncert szopina", date: '2026-04-15', totalSeats: 100, takenSeats: 10 },
+    { id: 1, name: "Koncert Chopina", date: '2026-04-15', totalSeats: 100, takenSeats: 10 },
     { id: 2, name: "Koncert Bambi", date: '2026-09-10', totalSeats: 100, takenSeats: 60 },
-    { id: 3, name: "Koncert Jasia Kapeli", date: '2026-11-02', totalSeats: 100, takenSeats: 0 },
+    { id: 3, name: "Koncert Skolima", date: '2026-11-02', totalSeats: 100, takenSeats: 0 },
+    { id: 4, name: "Roztańczony PGE Narodowy", date: '2026-10-10', totalSeats: 500, takenSeats: 125 },
   ];
 
   private load(): Event[] {
