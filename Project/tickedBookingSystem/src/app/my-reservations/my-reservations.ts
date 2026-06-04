@@ -42,10 +42,32 @@ export class MyReservations implements OnInit {
       this.events = this.events.filter(e => e.id !== eventId);
     }
   }
+
   getCount(eventId: number): number {
     const username = this.authService.getLoggedUser();
-    if (!username) 
-      return 0;
-      return this.reservationService.getCountByUser(username, eventId);
+    if (!username) return 0;
+    return this.reservationService.getCountByUser(username, eventId);
   }
+
+  getChanges(eventId: number): string[] {
+    const username = this.authService.getLoggedUser();
+    if (!username) return [];
+    const snapshot = this.reservationService.getSnapshot(username, eventId);
+    const current = this.eventService.getById(eventId);
+    if (!snapshot || !current) return [];
+
+    const changes: string[] = [];
+    if (snapshot.name !== current.name)
+      changes.push('Nazwa zmieniona na: ' + current.name);
+    if (snapshot.date !== current.date)
+      changes.push('Data zmieniona na: ' + current.date);
+    return changes;
+  }
+  acknowledge(eventId: number): void {
+  const username = this.authService.getLoggedUser();
+  const current = this.eventService.getById(eventId);
+  if (username && current) {
+    this.reservationService.acknowledgeChanges(username, eventId, current.name, current.date);
+  }
+}
 }

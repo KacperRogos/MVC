@@ -36,19 +36,25 @@ export class EventForm implements OnInit {
       }
     }
   }
-  save(): void{
-    if(new Date(this.date) < new Date()) {
-      alert('Nie można dodać wydarzenia z datą z przeszłości oraz z obecnego dnia');
-      return;
-    }
-    if(this.isEditMode) {
-      const id = Number(this.route.snapshot.paramMap.get('id'));
-      this.eventService.update({ id, name: this.name, date: this.date, totalSeats: this.totalSeats, takenSeats: 0 });
-    }else{
-      this.eventService.add({ name: this.name, date: this.date, totalSeats: this.totalSeats, takenSeats: 0 });
+  save(): void {
+  if (new Date(this.date) < new Date()) {
+    alert('Nie można dodać wydarzenia z datą z przeszłości oraz z obecnego dnia');
+    return;
+  }
+  if (this.isEditMode) {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const existing = this.eventService.getById(id);
+    this.eventService.update({ 
+      id, 
+      name: this.name, 
+      date: this.date, 
+      totalSeats: this.totalSeats, 
+      takenSeats: existing ? existing.takenSeats : 0 
+    });
+  } else {
+    this.eventService.add({ name: this.name, date: this.date, totalSeats: this.totalSeats, takenSeats: 0 });
   }
   this.router.navigate(['/events']);
-    
-  }
+}
 }
 

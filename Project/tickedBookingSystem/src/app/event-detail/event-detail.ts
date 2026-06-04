@@ -37,7 +37,7 @@ export class EventDetail implements OnInit {
       }
       const success = this.eventService.reserve(this.event.id);
       if (success) {
-        this.reservationService.add(username, this.event.id);
+        this.reservationService.add(username, this.event.id, this.event.name, this.event.date);
         this.message = 'Zarezerwowano bilet!';
         this.event = this.eventService.getById(this.event.id);
       } else {

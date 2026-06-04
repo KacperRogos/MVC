@@ -15,7 +15,10 @@ export class Login {
   password="";
   error="";
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ){}
 
   login(): void{
     const success = this.authService.login(this.username, this.password);

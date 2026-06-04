@@ -8,11 +8,19 @@ export class EventService {
   private storageKey = 'events';
 
   private defaultEvents: Event[] = [
-    { id: 1, name: "Koncert Chopina", date: '2026-04-15', totalSeats: 100, takenSeats: 10 },
-    { id: 2, name: "Koncert Bambi", date: '2026-09-10', totalSeats: 100, takenSeats: 60 },
-    { id: 3, name: "Koncert Skolima", date: '2026-11-02', totalSeats: 100, takenSeats: 0 },
-    { id: 4, name: "Roztańczony PGE Narodowy", date: '2026-10-10', totalSeats: 500, takenSeats: 125 },
-  ];
+  { id: 1, name: "Koncert Chopina", date: '2026-07-15', totalSeats: 100, takenSeats: 10 },
+  { id: 2, name: "Festiwal Jazzowy", date: '2026-08-20', totalSeats: 200, takenSeats: 60 },
+  { id: 3, name: "Koncert Skolima", date: '2026-11-02', totalSeats: 100, takenSeats: 0 },
+  { id: 4, name: "Roztańczony PGE Narodowy", date: '2026-10-10', totalSeats: 500, takenSeats: 125 },
+  { id: 5, name: "Opera Krakowska", date: '2026-09-05', totalSeats: 150, takenSeats: 30 },
+  { id: 6, name: "Teatr Wielki: Jezioro Łabędzie", date: '2026-12-18', totalSeats: 300, takenSeats: 0 },
+  { id: 7, name: "Koncert Rockowy: Metallica", date: '2026-07-04', totalSeats: 5000, takenSeats: 4800 },
+  { id: 8, name: "Kabaret Ani Mru Mru", date: '2026-09-28', totalSeats: 400, takenSeats: 200 },
+  { id: 9, name: "Festiwal Filmowy w Gdyni", date: '2026-08-10', totalSeats: 600, takenSeats: 0 },
+  { id: 10, name: "Koncert Symfoniczny: Beethoven", date: '2026-11-30', totalSeats: 250, takenSeats: 50 },
+  { id: 11, name: "Koncert Bambi", date: '2026-03-15', totalSeats: 100, takenSeats: 80 },
+  { id: 12, name: "Festiwal Disco Polo", date: '2026-04-01', totalSeats: 1000, takenSeats: 999 },
+];
 
   private load(): Event[] {
     if (typeof window === 'undefined') 

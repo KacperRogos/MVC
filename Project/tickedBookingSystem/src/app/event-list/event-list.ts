@@ -16,7 +16,10 @@ export class EventList implements OnInit {
   events: Event[] = [];
   searchText: string = '';
 
-  constructor(private eventService: EventService, public authService: AuthService) {}
+  constructor(
+    private eventService: EventService, 
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.events = this.eventService.getAll();
