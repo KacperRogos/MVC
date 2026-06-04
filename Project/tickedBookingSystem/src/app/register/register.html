@@ -1,0 +1,35 @@
+<form #registerForm="ngForm" (ngSubmit)="register()">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <h2 class="text-center mb-4">Rejestracja</h2>
+
+        <div class="mb-3">
+          <label class="form-label" for="username">Nazwa użytkownika</label>
+          <input type="text" class="form-control" id="username" name="username" required
+            [(ngModel)]="username" #usernameModel="ngModel"
+            [class.is-invalid]="usernameModel.invalid && usernameModel.touched">
+          <div class="invalid-feedback">Nazwa użytkownika jest wymagana</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="password">Hasło</label>
+          <input type="password" class="form-control" id="password" name="password" required minlength="6"
+            [(ngModel)]="password" #passwordModel="ngModel"
+            [class.is-invalid]="passwordModel.invalid && passwordModel.touched">
+          <div class="invalid-feedback">Hasło jest wymagane i musi mieć min. 6 znaków</div>
+        </div>
+
+        <p *ngIf="error" class="text-danger">{{error}}</p>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">
+          Zarejestruj
+        </button>
+
+        <a routerLink="/login" class="btn btn-outline-secondary w-100 mt-2">
+          Masz już konto? Zaloguj się
+        </a>
+      </div>
+    </div>
+  </div>
+</form>
